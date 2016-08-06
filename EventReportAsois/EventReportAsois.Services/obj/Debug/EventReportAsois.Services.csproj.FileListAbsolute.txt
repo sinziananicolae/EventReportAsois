@@ -1,0 +1,17 @@
+E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Services\bin\Debug\EventReportAsois.Services.dll.config
+E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Services\bin\Debug\EventReportAsois.Services.dll
+E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Services\bin\Debug\EventReportAsois.Services.pdb
+E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Services\bin\Debug\EntityFramework.dll
+E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Services\bin\Debug\EntityFramework.SqlServer.dll
+E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Services\bin\Debug\EventReportAsois.Data.dll
+E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Services\bin\Debug\RestSharp.dll
+E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Services\bin\Debug\Twilio.Api.dll
+E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Services\bin\Debug\EventReportAsois.Data.pdb
+E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Services\bin\Debug\EntityFramework.xml
+E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Services\bin\Debug\EntityFramework.SqlServer.xml
+E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Services\bin\Debug\RestSharp.xml
+E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Services\bin\Debug\Twilio.Api.pdb
+E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Services\bin\Debug\Twilio.Api.xml
+E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Services\obj\Debug\EventReportAsois.Services.csprojResolveAssemblyReference.cache
+E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Services\obj\Debug\EventReportAsois.Services.dll
+E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Services\obj\Debug\EventReportAsois.Services.pdb

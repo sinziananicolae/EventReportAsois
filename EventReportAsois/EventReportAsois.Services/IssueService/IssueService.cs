@@ -1,23 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity.Validation;
-using System.Diagnostics;
 using System.Linq;
-using System.Net.Mail;
-using System.Text;
-using System.Web;
 using EventReportAsois.Data.Database;
-using Twilio;
 
-namespace EventReport.Services.IssueService
+namespace EventReportAsois.Services.IssueService
 {
     public class IssueService
     {
-        private EventReportEntities _DbEntities;
+        private EventReportDbEntities _DbEntities;
 
         public IssueService()
         {
-            _DbEntities = new EventReportEntities();
+            _DbEntities = new EventReportDbEntities();
         }
 
         public IEnumerable<object> GetAllIssues()
@@ -95,7 +89,7 @@ namespace EventReport.Services.IssueService
             }).Where(f => f.Id == id);
         }
 
-        public object CreateIssue(Issue issue)
+        public object CreateIssue(EventReportAsois.Data.Database.Issue issue)
         {
 
             if (issue.Title == null || issue.MapLat == null ||
@@ -167,7 +161,7 @@ namespace EventReport.Services.IssueService
         //    };
         //}
 
-        public object UpdateIssue(int id, Issue issue)
+        public object UpdateIssue(int id, EventReportAsois.Data.Database.Issue issue)
         {
             if (issue.Title == null || issue.Address == null || issue.Description == null || issue.MapLat == null ||
                 issue.MapLng == null || issue.SeverityId == 0 || issue.CategoryId == 0 ||

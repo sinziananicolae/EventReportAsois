@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using EventReportAsois.Data.Database;
 
-namespace EventReport.Services.SeverityService
+namespace EventReportAsois.Services.SeverityService
 {
     public class SeverityService
     {
-        private EventReportEntities _DbEntities;
+        private EventReportDbEntities _DbEntities;
 
         public SeverityService()
         {
-            _DbEntities = new EventReportEntities();
+            _DbEntities = new EventReportDbEntities();
         }
 
         public IEnumerable<object> GetALlSeverities()

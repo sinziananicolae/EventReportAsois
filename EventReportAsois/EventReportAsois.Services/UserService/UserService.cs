@@ -9,11 +9,11 @@ namespace EventReportAsois.Services.UserService
 {
     public class UserService
     {
-        private EventReportEntities _DbEntities;
+        private EventReportDbEntities _DbEntities;
 
         public UserService()
         {
-            _DbEntities = new EventReportEntities();
+            _DbEntities = new EventReportDbEntities();
         }
 
         public List<UserProfile> GetAllUsers()

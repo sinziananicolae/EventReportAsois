@@ -206,12 +206,17 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="ControllersAPI\CategoryController.cs" />
+    <Compile Include="ControllersAPI\IssueController.cs" />
+    <Compile Include="ControllersAPI\SeverityController.cs" />
+    <Compile Include="ControllersAPI\UserController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -219,31 +224,91 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\App\Site.css" />
+    <Content Include="Content\Core\Bootstrap\css\bootstrap-theme.css" />
+    <Content Include="Content\Core\Bootstrap\css\bootstrap.css" />
+    <Content Include="Content\Core\Bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Core\FontAwesome\css\font-awesome.css" />
+    <Content Include="Content\Core\FontAwesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\Core\JQuery-UI\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="Content\Core\JQuery-UI\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="Content\Core\JQuery-UI\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="Content\Core\JQuery-UI\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="Content\Core\JQuery-UI\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="Content\Core\JQuery-UI\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\Core\JQuery-UI\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="Content\Core\JQuery-UI\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="Content\Core\JQuery-UI\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="Content\Core\JQuery-UI\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\Core\JQuery-UI\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="Content\Core\JQuery-UI\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="Content\Core\JQuery-UI\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="Content\Core\JQuery-UI\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\Core\JQuery-UI\jquery-ui.css" />
+    <Content Include="Content\Core\JQuery-UI\jquery-ui.structure.css" />
+    <Content Include="Content\Core\JQuery-UI\jquery-ui.theme.css" />
+    <Content Include="Content\Core\Toastr\toastr.css" />
+    <Content Include="Content\Images\accent.png" />
+    <Content Include="Content\Images\bullet.png" />
+    <Content Include="Content\Images\heroAccent.png" />
+    <Content Include="Content\Images\orderedList0.png" />
+    <Content Include="Content\Images\orderedList1.png" />
+    <Content Include="Content\Images\orderedList2.png" />
+    <Content Include="Content\Images\orderedList3.png" />
+    <Content Include="Content\Images\orderedList4.png" />
+    <Content Include="Content\Images\orderedList5.png" />
+    <Content Include="Content\Images\orderedList6.png" />
+    <Content Include="Content\Images\orderedList7.png" />
+    <Content Include="Content\Images\orderedList8.png" />
+    <Content Include="Content\Images\orderedList9.png" />
+    <Content Include="Content\Theme\img\avatar.png" />
+    <Content Include="Content\Theme\img\avatar04.png" />
+    <Content Include="Content\Theme\img\avatar2.png" />
+    <Content Include="Content\Theme\img\avatar3.png" />
+    <Content Include="Content\Theme\img\avatar5.png" />
+    <Content Include="Content\Theme\img\icons.png" />
+    <Content Include="Content\Theme\skins\skin-green.css" />
+    <Content Include="Content\Theme\Theme.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
-    <Content Include="Scripts\ai.0.22.9-build00167.js" />
-    <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\respond.js" />
-    <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\_references.js" />
+    <Content Include="Scripts\App\Applications\User\app.js" />
+    <Content Include="Scripts\App\Applications\User\config.js" />
+    <Content Include="Scripts\App\Applications\User\Modules\Home\HomeController.js" />
+    <Content Include="Scripts\App\Applications\User\Modules\Home\Views\add-issue-modal.html" />
+    <Content Include="Scripts\App\Applications\User\Modules\Home\Views\home.html" />
+    <Content Include="Scripts\App\Applications\User\Modules\Shared\Header\View\header.html" />
+    <Content Include="Scripts\App\Applications\User\routes.js" />
+    <Content Include="Scripts\App\Applications\User\services.js" />
+    <Content Include="Scripts\App\Common\Directives\directives.js" />
+    <Content Include="Scripts\App\Common\Filters\filters.js" />
+    <Content Include="Scripts\App\Components\BaseController.js" />
+    <Content Include="Scripts\App\Components\DOMHelpers.js" />
+    <Content Include="Scripts\App\Components\EventDispatcher.js" />
+    <Content Include="Scripts\App\Components\httpRequestTracker.js" />
+    <Content Include="Scripts\Core\AngularJS\angular-animate.js" />
+    <Content Include="Scripts\Core\AngularJS\angular-cookies.js" />
+    <Content Include="Scripts\Core\AngularJS\angular-google-maps.js" />
+    <Content Include="Scripts\Core\AngularJS\angular-resource.js" />
+    <Content Include="Scripts\Core\AngularJS\angular-route.js" />
+    <Content Include="Scripts\Core\AngularJS\angular-sanitize.js" />
+    <Content Include="Scripts\Core\AngularJS\angular-simple-logger.js" />
+    <Content Include="Scripts\Core\AngularJS\angular.js" />
+    <Content Include="Scripts\Core\Bootstrap\bootstrap.js" />
+    <Content Include="Scripts\Core\Bootstrap\ui-bootstrap-tpls-0.14.3.js" />
+    <Content Include="Scripts\Core\Class\class.js" />
+    <Content Include="Scripts\Core\Class\namespace.js" />
+    <Content Include="Scripts\Core\JQuery\jquery-1.11.3.js" />
+    <Content Include="Scripts\Core\JQuery\jquery-ui.js" />
+    <Content Include="Scripts\Core\JQuery\jquery.validate.js" />
+    <Content Include="Scripts\Core\Lodash\lodash.js" />
+    <Content Include="Scripts\Core\Logger\logger.js" />
+    <Content Include="Scripts\Core\SlimScroll\jquery.slimscroll.js" />
+    <Content Include="Scripts\Core\Toastr\toastr.js" />
+    <Content Include="Scripts\Core\Underscore\underscore.js" />
+    <Content Include="Scripts\Theme\custom.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -282,17 +347,34 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Images\Maps\" />
+    <Folder Include="Scripts\App\Common\Services\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
+    <Content Include="Content\Core\Bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\Core\Bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\Core\Bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\Core\Bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\Core\FontAwesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\Core\FontAwesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\Core\FontAwesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\Core\FontAwesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\Core\FontAwesome\fonts\FontAwesome.otf" />
     <None Include="Project_Readme.html" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EventReportAsois.Data\EventReportAsois.Data.csproj">
+      <Project>{d3596400-1a63-429f-b879-95a14df0b8d4}</Project>
+      <Name>EventReportAsois.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EventReportAsois.Services\EventReportAsois.Services.csproj">
+      <Project>{004c8a52-10f3-4d0a-873d-7151ffb529a0}</Project>
+      <Name>EventReportAsois.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

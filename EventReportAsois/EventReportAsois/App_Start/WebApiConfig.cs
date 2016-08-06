@@ -10,8 +10,13 @@ namespace EventReportAsois
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
+            config.Formatters.Remove(config.Formatters.XmlFormatter);
 
-            // Web API routes
+            var json = GlobalConfiguration.Configuration.Formatters.JsonFormatter;
+            //json.SerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Utc;
+            //json.SerializerSettings.Converters.Add(new DateTimeConverter());
+            json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.None;
+
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(

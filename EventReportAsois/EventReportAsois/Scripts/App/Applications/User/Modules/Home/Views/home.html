@@ -1,0 +1,41 @@
+﻿<div class="col-xs-12 col-md-12 p-20 ">
+    <div class="col-md-10" id="searchBoxParent">
+        <script type="text/ng-template" id="searchBox.template.html">
+            <input type="text" ng-model="address" class="form-control" placeholder="Search Address" required />
+        </script>
+    </div>
+    <div class="col-md-2">
+        <button class="btn btn-block btn-primary" data-toggle="modal" data-target="#addIssueModal">Add Issue</button>
+    </div>
+</div>
+
+
+<div class="col-xs-12 col-md-12 no-padding" id="map">
+    <ui-gmap-google-map center="map.center" zoom="map.zoom" events="map.events" control="control">
+        <ui-gmap-marker coords="map.marker.coords" options="map.marker.options" events="map.marker.events" idkey="map.marker.id">
+        </ui-gmap-marker>
+        <ui-gmap-search-box template="searchbox.template" events="searchbox.events" parentdiv="searchbox.parentdiv"></ui-gmap-search-box>
+    </ui-gmap-google-map>
+</div>
+
+<!--<img ng-src="data:image/JPEG;base64,{{allIssues.Image}}">-->
+
+<style>
+    #map {
+        height: 100%;
+    }
+
+    .angular-google-map-container {
+        height: 700px;
+    }
+
+    .p-20 {
+        padding: 20px;
+    }
+
+    .btn-primary:focus, .btn-primary:hover {
+        background-position: 0 0;
+    }
+</style>
+
+<data-add-issue-modal></data-add-issue-modal>

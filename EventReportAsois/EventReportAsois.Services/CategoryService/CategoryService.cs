@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using EventReportAsois.Data.Database;
 
-namespace EventReport.Services.CategoryService
+namespace EventReportAsois.Services.CategoryService
 {
     public class CategoryService
     {
-        private EventReportEntities _DbEntities;
+        private EventReportDbEntities _DbEntities;
 
         public CategoryService()
         {
-            _DbEntities = new EventReportEntities();
+            _DbEntities = new EventReportDbEntities();
         }
 
         public List<object> GetAllCategories()
