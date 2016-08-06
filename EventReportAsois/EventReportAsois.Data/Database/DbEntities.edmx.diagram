@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3d3588a49d7b4aa9b91847b6adc68d4d" Name="Diagram1">
+        <EntityTypeShape EntityType="EventReportModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventReportModel.AspNetRole" Width="1.5" PointX="7.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventReportModel.AspNetUserClaim" Width="1.5" PointX="12.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventReportModel.AspNetUserLogin" Width="1.5" PointX="12.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventReportModel.AspNetUser" Width="1.5" PointX="10" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventReportModel.Comment" Width="1.5" PointX="7.5" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventReportModel.IssueCategory" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventReportModel.Issue" Width="1.5" PointX="5.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventReportModel.IssueSubcategory" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventReportModel.Severity" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventReportModel.Status" Width="1.5" PointX="3" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventReportModel.UserProfile" Width="1.5" PointX="3" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventReportModel.database_firewall_rules" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="EventReportModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="EventReportModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="EventReportModel.FK_IssueId_Comment" ManuallyRouted="false" />
+        <AssociationConnector Association="EventReportModel.FK_UserId_Comment" ManuallyRouted="false" />
+        <AssociationConnector Association="EventReportModel.FK_CategoryId_Issue" ManuallyRouted="false" />
+        <AssociationConnector Association="EventReportModel.FK_Subcategory_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="EventReportModel.FK_SeverityId_Issue" ManuallyRouted="false" />
+        <AssociationConnector Association="EventReportModel.FK_StatusId_Issue" ManuallyRouted="false" />
+        <AssociationConnector Association="EventReportModel.FK_SubCategoryId_Issue" ManuallyRouted="false" />
+        <AssociationConnector Association="EventReportModel.FK_UserId_Issue" ManuallyRouted="false" />
+        <AssociationConnector Association="EventReportModel.AspNetUserRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,8 @@
+E:\Documents\Master\ASOIS\EventReportAsois\EventReportAsois.Data\bin\Debug\EventReportAsois.Data.dll.config
+E:\Documents\Master\ASOIS\EventReportAsois\EventReportAsois.Data\bin\Debug\EventReportAsois.Data.dll
+E:\Documents\Master\ASOIS\EventReportAsois\EventReportAsois.Data\bin\Debug\EventReportAsois.Data.pdb
+E:\Documents\Master\ASOIS\EventReportAsois\EventReportAsois.Data\bin\Debug\EntityFramework.dll
+E:\Documents\Master\ASOIS\EventReportAsois\EventReportAsois.Data\bin\Debug\EntityFramework.xml
+E:\Documents\Master\ASOIS\EventReportAsois\EventReportAsois.Data\obj\Debug\EventReportAsois.Data.csprojResolveAssemblyReference.cache
+E:\Documents\Master\ASOIS\EventReportAsois\EventReportAsois.Data\obj\Debug\EventReportAsois.Data.dll
+E:\Documents\Master\ASOIS\EventReportAsois\EventReportAsois.Data\obj\Debug\EventReportAsois.Data.pdb
