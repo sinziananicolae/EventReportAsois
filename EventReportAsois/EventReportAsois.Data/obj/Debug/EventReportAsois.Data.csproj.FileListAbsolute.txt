@@ -3,11 +3,6 @@ E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Data\bin\Debug\
 E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Data\bin\Debug\EventReportAsois.Data.pdb
 E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Data\bin\Debug\EntityFramework.dll
 E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Data\bin\Debug\EntityFramework.SqlServer.dll
-E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Data\bin\Debug\EntityFramework.xml
-E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Data\bin\Debug\EntityFramework.SqlServer.xml
-E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Data\obj\Debug\EventReportAsois.Data.dll
-E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Data\obj\Debug\EventReportAsois.Data.pdb
-E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Data\obj\Debug\EventReportAsois.Data.csprojResolveAssemblyReference.cache
 E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Data\bin\Debug\Microsoft.Azure.KeyVault.Core.dll
 E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Data\bin\Debug\Microsoft.Data.Edm.dll
 E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Data\bin\Debug\Microsoft.Data.OData.dll
@@ -16,6 +11,8 @@ E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Data\bin\Debug\
 E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Data\bin\Debug\Microsoft.WindowsAzure.Storage.dll
 E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Data\bin\Debug\Newtonsoft.Json.dll
 E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Data\bin\Debug\System.Spatial.dll
+E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Data\bin\Debug\EntityFramework.xml
+E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Data\bin\Debug\EntityFramework.SqlServer.xml
 E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Data\bin\Debug\Microsoft.Azure.KeyVault.Core.xml
 E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Data\bin\Debug\Microsoft.Data.Edm.xml
 E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Data\bin\Debug\Microsoft.Data.OData.xml
@@ -61,3 +58,6 @@ E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Data\bin\Debug\
 E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Data\bin\Debug\ru\System.Spatial.resources.dll
 E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Data\bin\Debug\zh-Hans\System.Spatial.resources.dll
 E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Data\bin\Debug\zh-Hant\System.Spatial.resources.dll
+E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Data\obj\Debug\EventReportAsois.Data.csprojResolveAssemblyReference.cache
+E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Data\obj\Debug\EventReportAsois.Data.dll
+E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Data\obj\Debug\EventReportAsois.Data.pdb

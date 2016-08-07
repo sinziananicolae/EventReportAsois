@@ -96,7 +96,7 @@
     <Property Name="TimeStamp" Type="datetime" />
     <Property Name="ViewsNo" Type="int" Nullable="false" />
     <Property Name="VotesNo" Type="int" Nullable="false" />
-    <Property Name="Image" Type="binary" MaxLength="5000" />
+    <Property Name="Image" Type="varchar" MaxLength="5000" />
   </EntityType>
   <EntityType Name="IssueSubcategories">
     <Key>
