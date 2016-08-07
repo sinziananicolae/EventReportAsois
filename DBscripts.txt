@@ -1,0 +1,6 @@
+--- Severities ---
+
+INSERT INTO Severities (Name) VALUES ('Low');
+INSERT INTO Severities (Name) VALUES ('Medium');
+INSERT INTO Severities (Name) VALUES ('High');
+INSERT INTO Severities (Name) VALUES ('Critical');
