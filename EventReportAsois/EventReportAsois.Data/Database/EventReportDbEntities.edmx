@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="EventReportModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="EventReportModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -101,7 +101,7 @@
           <Property Name="TimeStamp" Type="datetime" />
           <Property Name="ViewsNo" Type="int" Nullable="false" />
           <Property Name="VotesNo" Type="int" Nullable="false" />
-          <Property Name="Image" Type="binary" MaxLength="5000" />
+          <Property Name="Image" Type="varchar" MaxLength="5000" />
         </EntityType>
         <EntityType Name="IssueSubcategories">
           <Key>
@@ -394,38 +394,96 @@ warning 6002: The table/view 'EventReport.sys.database_firewall_rules' does not 
             <End Role="Issues" EntitySet="Issues" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="EventReportModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="EventReportDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="EventReportModel.C__MigrationHistory" />
+          <EntitySet Name="AspNetRoles" EntityType="EventReportModel.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="EventReportModel.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="EventReportModel.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="EventReportModel.AspNetUser" />
+          <EntitySet Name="Comments" EntityType="EventReportModel.Comment" />
+          <EntitySet Name="IssueCategories" EntityType="EventReportModel.IssueCategory" />
+          <EntitySet Name="Issues" EntityType="EventReportModel.Issue" />
+          <EntitySet Name="IssueSubcategories" EntityType="EventReportModel.IssueSubcategory" />
+          <EntitySet Name="Severities" EntityType="EventReportModel.Severity" />
+          <EntitySet Name="Statuses" EntityType="EventReportModel.Status" />
+          <EntitySet Name="UserProfiles" EntityType="EventReportModel.UserProfile" />
+          <EntitySet Name="database_firewall_rules" EntityType="EventReportModel.database_firewall_rules" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="EventReportModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="EventReportModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IssueId_Comment" Association="EventReportModel.FK_IssueId_Comment">
+            <End Role="Issue" EntitySet="Issues" />
+            <End Role="Comment" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserId_Comment" Association="EventReportModel.FK_UserId_Comment">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="Comment" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoryId_Issue" Association="EventReportModel.FK_CategoryId_Issue">
+            <End Role="IssueCategory" EntitySet="IssueCategories" />
+            <End Role="Issue" EntitySet="Issues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Subcategory_Category" Association="EventReportModel.FK_Subcategory_Category">
+            <End Role="IssueCategory" EntitySet="IssueCategories" />
+            <End Role="IssueSubcategory" EntitySet="IssueSubcategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SeverityId_Issue" Association="EventReportModel.FK_SeverityId_Issue">
+            <End Role="Severity" EntitySet="Severities" />
+            <End Role="Issue" EntitySet="Issues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StatusId_Issue" Association="EventReportModel.FK_StatusId_Issue">
+            <End Role="Status" EntitySet="Statuses" />
+            <End Role="Issue" EntitySet="Issues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubCategoryId_Issue" Association="EventReportModel.FK_SubCategoryId_Issue">
+            <End Role="IssueSubcategory" EntitySet="IssueSubcategories" />
+            <End Role="Issue" EntitySet="Issues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserId_Issue" Association="EventReportModel.FK_UserId_Issue">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="Issue" EntitySet="Issues" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="EventReportModel.AspNetUserRoles">
+            <End Role="AspNetRole" EntitySet="AspNetRoles" />
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="C__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
             <PropertyRef Name="ContextKey" />
           </Key>
-          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
-          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="AspNetRole">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="EventReportModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
         </EntityType>
         <EntityType Name="AspNetUserClaim">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+          <NavigationProperty Name="AspNetUser" Relationship="EventReportModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
         </EntityType>
         <EntityType Name="AspNetUserLogin">
           <Key>
@@ -433,16 +491,16 @@ warning 6002: The table/view 'EventReport.sys.database_firewall_rules' does not 
             <PropertyRef Name="ProviderKey" />
             <PropertyRef Name="UserId" />
           </Key>
-          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="EventReportModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
         </EntityType>
         <EntityType Name="AspNetUser">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
           <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -453,10 +511,10 @@ warning 6002: The table/view 'EventReport.sys.database_firewall_rules' does not 
           <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
           <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
           <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
-          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
-          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
-          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="EventReportModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="EventReportModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+          <NavigationProperty Name="AspNetRoles" Relationship="EventReportModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
         </EntityType>
         <EntityType Name="Comment">
           <Key>
@@ -464,90 +522,90 @@ warning 6002: The table/view 'EventReport.sys.database_firewall_rules' does not 
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IssueId" Type="Int32" Nullable="false" />
-          <Property Name="UserId" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Issue" Relationship="Self.FK_IssueId_Comment" FromRole="Comments" ToRole="Issues" />
-          <NavigationProperty Name="UserProfile" Relationship="Self.FK_UserId_Comment" FromRole="Comments" ToRole="UserProfiles" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Issue" Relationship="EventReportModel.FK_IssueId_Comment" FromRole="Comment" ToRole="Issue" />
+          <NavigationProperty Name="UserProfile" Relationship="EventReportModel.FK_UserId_Comment" FromRole="Comment" ToRole="UserProfile" />
         </EntityType>
         <EntityType Name="IssueCategory">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Issues" Relationship="Self.FK_CategoryId_Issue" FromRole="IssueCategories" ToRole="Issues" />
-          <NavigationProperty Name="IssueSubcategories" Relationship="Self.FK_Subcategory_Category" FromRole="IssueCategories" ToRole="IssueSubcategories" />
+          <NavigationProperty Name="Issues" Relationship="EventReportModel.FK_CategoryId_Issue" FromRole="IssueCategory" ToRole="Issue" />
+          <NavigationProperty Name="IssueSubcategories" Relationship="EventReportModel.FK_Subcategory_Category" FromRole="IssueCategory" ToRole="IssueSubcategory" />
         </EntityType>
         <EntityType Name="Issue">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Title" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="CategoryId" Type="Int32" Nullable="false" />
           <Property Name="SubcategoryId" Type="Int32" />
           <Property Name="StatusId" Type="Int32" Nullable="false" />
           <Property Name="SeverityId" Type="Int32" Nullable="false" />
           <Property Name="Address" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="MapLat" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MapLng" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MapLat" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="MapLng" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="TimeStamp" Type="DateTime" Precision="3" />
           <Property Name="ViewsNo" Type="Int32" Nullable="false" />
           <Property Name="VotesNo" Type="Int32" Nullable="false" />
-          <Property Name="Image" Type="Binary" MaxLength="5000" FixedLength="true" />
-          <NavigationProperty Name="Comments" Relationship="Self.FK_IssueId_Comment" FromRole="Issues" ToRole="Comments" />
-          <NavigationProperty Name="IssueCategory" Relationship="Self.FK_CategoryId_Issue" FromRole="Issues" ToRole="IssueCategories" />
-          <NavigationProperty Name="Severity" Relationship="Self.FK_SeverityId_Issue" FromRole="Issues" ToRole="Severities" />
-          <NavigationProperty Name="Status" Relationship="Self.FK_StatusId_Issue" FromRole="Issues" ToRole="Statuses" />
-          <NavigationProperty Name="IssueSubcategory" Relationship="Self.FK_SubCategoryId_Issue" FromRole="Issues" ToRole="IssueSubcategories" />
-          <NavigationProperty Name="UserProfile" Relationship="Self.FK_UserId_Issue" FromRole="Issues" ToRole="UserProfiles" />
+          <Property Name="Image" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Comments" Relationship="EventReportModel.FK_IssueId_Comment" FromRole="Issue" ToRole="Comment" />
+          <NavigationProperty Name="IssueCategory" Relationship="EventReportModel.FK_CategoryId_Issue" FromRole="Issue" ToRole="IssueCategory" />
+          <NavigationProperty Name="Severity" Relationship="EventReportModel.FK_SeverityId_Issue" FromRole="Issue" ToRole="Severity" />
+          <NavigationProperty Name="Status" Relationship="EventReportModel.FK_StatusId_Issue" FromRole="Issue" ToRole="Status" />
+          <NavigationProperty Name="IssueSubcategory" Relationship="EventReportModel.FK_SubCategoryId_Issue" FromRole="Issue" ToRole="IssueSubcategory" />
+          <NavigationProperty Name="UserProfile" Relationship="EventReportModel.FK_UserId_Issue" FromRole="Issue" ToRole="UserProfile" />
         </EntityType>
         <EntityType Name="IssueSubcategory">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="CategoryId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="IssueCategory" Relationship="Self.FK_Subcategory_Category" FromRole="IssueSubcategories" ToRole="IssueCategories" />
-          <NavigationProperty Name="Issues" Relationship="Self.FK_SubCategoryId_Issue" FromRole="IssueSubcategories" ToRole="Issues" />
+          <NavigationProperty Name="IssueCategory" Relationship="EventReportModel.FK_Subcategory_Category" FromRole="IssueSubcategory" ToRole="IssueCategory" />
+          <NavigationProperty Name="Issues" Relationship="EventReportModel.FK_SubCategoryId_Issue" FromRole="IssueSubcategory" ToRole="Issue" />
         </EntityType>
         <EntityType Name="Severity">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Issues" Relationship="Self.FK_SeverityId_Issue" FromRole="Severities" ToRole="Issues" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Issues" Relationship="EventReportModel.FK_SeverityId_Issue" FromRole="Severity" ToRole="Issue" />
         </EntityType>
         <EntityType Name="Status">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Issues" Relationship="Self.FK_StatusId_Issue" FromRole="Statuses" ToRole="Issues" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Issues" Relationship="EventReportModel.FK_StatusId_Issue" FromRole="Status" ToRole="Issue" />
         </EntityType>
         <EntityType Name="UserProfile">
           <Key>
             <PropertyRef Name="UserId" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="FirstName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="LastName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="PhoneNumber" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="Country" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
           <Property Name="Sex" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Comments" Relationship="Self.FK_UserId_Comment" FromRole="UserProfiles" ToRole="Comments" />
-          <NavigationProperty Name="Issues" Relationship="Self.FK_UserId_Issue" FromRole="UserProfiles" ToRole="Issues" />
+          <NavigationProperty Name="Comments" Relationship="EventReportModel.FK_UserId_Comment" FromRole="UserProfile" ToRole="Comment" />
+          <NavigationProperty Name="Issues" Relationship="EventReportModel.FK_UserId_Issue" FromRole="UserProfile" ToRole="Issue" />
         </EntityType>
         <EntityType Name="database_firewall_rules">
           <Key>
@@ -559,209 +617,150 @@ warning 6002: The table/view 'EventReport.sys.database_firewall_rules' does not 
             <PropertyRef Name="modify_date" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="start_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="end_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="start_ip_address" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="end_ip_address" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="modify_date" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+          <End Type="EventReportModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+          <End Type="EventReportModel.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
+            <Principal Role="AspNetUser">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="AspNetUserClaims">
+            <Dependent Role="AspNetUserClaim">
               <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+          <End Type="EventReportModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+          <End Type="EventReportModel.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
+            <Principal Role="AspNetUser">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="AspNetUserLogins">
+            <Dependent Role="AspNetUserLogin">
               <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_IssueId_Comment">
-          <End Role="Issues" Type="Self.Issue" Multiplicity="1">
+          <End Type="EventReportModel.Issue" Role="Issue" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Comments" Type="Self.Comment" Multiplicity="*" />
+          <End Type="EventReportModel.Comment" Role="Comment" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Issues">
+            <Principal Role="Issue">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Comments">
+            <Dependent Role="Comment">
               <PropertyRef Name="IssueId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UserId_Comment">
-          <End Role="UserProfiles" Type="Self.UserProfile" Multiplicity="1">
+          <End Type="EventReportModel.UserProfile" Role="UserProfile" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Comments" Type="Self.Comment" Multiplicity="*" />
+          <End Type="EventReportModel.Comment" Role="Comment" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="UserProfiles">
+            <Principal Role="UserProfile">
               <PropertyRef Name="UserId" />
             </Principal>
-            <Dependent Role="Comments">
+            <Dependent Role="Comment">
               <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_CategoryId_Issue">
-          <End Role="IssueCategories" Type="Self.IssueCategory" Multiplicity="1">
+          <End Type="EventReportModel.IssueCategory" Role="IssueCategory" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Issues" Type="Self.Issue" Multiplicity="*" />
+          <End Type="EventReportModel.Issue" Role="Issue" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="IssueCategories">
+            <Principal Role="IssueCategory">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Issues">
+            <Dependent Role="Issue">
               <PropertyRef Name="CategoryId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Subcategory_Category">
-          <End Role="IssueCategories" Type="Self.IssueCategory" Multiplicity="1" />
-          <End Role="IssueSubcategories" Type="Self.IssueSubcategory" Multiplicity="*" />
+          <End Type="EventReportModel.IssueCategory" Role="IssueCategory" Multiplicity="1" />
+          <End Type="EventReportModel.IssueSubcategory" Role="IssueSubcategory" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="IssueCategories">
+            <Principal Role="IssueCategory">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="IssueSubcategories">
+            <Dependent Role="IssueSubcategory">
               <PropertyRef Name="CategoryId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SeverityId_Issue">
-          <End Role="Severities" Type="Self.Severity" Multiplicity="1">
+          <End Type="EventReportModel.Severity" Role="Severity" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Issues" Type="Self.Issue" Multiplicity="*" />
+          <End Type="EventReportModel.Issue" Role="Issue" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Severities">
+            <Principal Role="Severity">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Issues">
+            <Dependent Role="Issue">
               <PropertyRef Name="SeverityId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_StatusId_Issue">
-          <End Role="Statuses" Type="Self.Status" Multiplicity="1">
+          <End Type="EventReportModel.Status" Role="Status" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Issues" Type="Self.Issue" Multiplicity="*" />
+          <End Type="EventReportModel.Issue" Role="Issue" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Statuses">
+            <Principal Role="Status">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Issues">
+            <Dependent Role="Issue">
               <PropertyRef Name="StatusId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SubCategoryId_Issue">
-          <End Role="IssueSubcategories" Type="Self.IssueSubcategory" Multiplicity="0..1" />
-          <End Role="Issues" Type="Self.Issue" Multiplicity="*" />
+          <End Type="EventReportModel.IssueSubcategory" Role="IssueSubcategory" Multiplicity="0..1" />
+          <End Type="EventReportModel.Issue" Role="Issue" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="IssueSubcategories">
+            <Principal Role="IssueSubcategory">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Issues">
+            <Dependent Role="Issue">
               <PropertyRef Name="SubcategoryId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UserId_Issue">
-          <End Role="UserProfiles" Type="Self.UserProfile" Multiplicity="1" />
-          <End Role="Issues" Type="Self.Issue" Multiplicity="*" />
+          <End Type="EventReportModel.UserProfile" Role="UserProfile" Multiplicity="1" />
+          <End Type="EventReportModel.Issue" Role="Issue" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="UserProfiles">
+            <Principal Role="UserProfile">
               <PropertyRef Name="UserId" />
             </Principal>
-            <Dependent Role="Issues">
+            <Dependent Role="Issue">
               <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="AspNetUserRoles">
-          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
-          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+          <End Type="EventReportModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+          <End Type="EventReportModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="EventReportDbEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
-          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
-          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
-          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
-          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
-          <EntitySet Name="Comments" EntityType="Self.Comment" />
-          <EntitySet Name="IssueCategories" EntityType="Self.IssueCategory" />
-          <EntitySet Name="Issues" EntityType="Self.Issue" />
-          <EntitySet Name="IssueSubcategories" EntityType="Self.IssueSubcategory" />
-          <EntitySet Name="Severities" EntityType="Self.Severity" />
-          <EntitySet Name="Statuses" EntityType="Self.Status" />
-          <EntitySet Name="UserProfiles" EntityType="Self.UserProfile" />
-          <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" />
-          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
-          </AssociationSet>
-          <AssociationSet Name="FK_IssueId_Comment" Association="Self.FK_IssueId_Comment">
-            <End Role="Issues" EntitySet="Issues" />
-            <End Role="Comments" EntitySet="Comments" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserId_Comment" Association="Self.FK_UserId_Comment">
-            <End Role="UserProfiles" EntitySet="UserProfiles" />
-            <End Role="Comments" EntitySet="Comments" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CategoryId_Issue" Association="Self.FK_CategoryId_Issue">
-            <End Role="IssueCategories" EntitySet="IssueCategories" />
-            <End Role="Issues" EntitySet="Issues" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Subcategory_Category" Association="Self.FK_Subcategory_Category">
-            <End Role="IssueCategories" EntitySet="IssueCategories" />
-            <End Role="IssueSubcategories" EntitySet="IssueSubcategories" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SeverityId_Issue" Association="Self.FK_SeverityId_Issue">
-            <End Role="Severities" EntitySet="Severities" />
-            <End Role="Issues" EntitySet="Issues" />
-          </AssociationSet>
-          <AssociationSet Name="FK_StatusId_Issue" Association="Self.FK_StatusId_Issue">
-            <End Role="Statuses" EntitySet="Statuses" />
-            <End Role="Issues" EntitySet="Issues" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SubCategoryId_Issue" Association="Self.FK_SubCategoryId_Issue">
-            <End Role="IssueSubcategories" EntitySet="IssueSubcategories" />
-            <End Role="Issues" EntitySet="Issues" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserId_Issue" Association="Self.FK_UserId_Issue">
-            <End Role="UserProfiles" EntitySet="UserProfiles" />
-            <End Role="Issues" EntitySet="Issues" />
-          </AssociationSet>
-          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
-            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -771,158 +770,158 @@ warning 6002: The table/view 'EventReport.sys.database_firewall_rules' does not 
           <EntitySetMapping Name="C__MigrationHistory">
             <EntityTypeMapping TypeName="EventReportModel.C__MigrationHistory">
               <MappingFragment StoreEntitySet="__MigrationHistory">
-                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
-                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
-                <ScalarProperty Name="Model" ColumnName="Model" />
                 <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetRoles">
             <EntityTypeMapping TypeName="EventReportModel.AspNetRole">
               <MappingFragment StoreEntitySet="AspNetRoles">
-                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUserClaims">
             <EntityTypeMapping TypeName="EventReportModel.AspNetUserClaim">
               <MappingFragment StoreEntitySet="AspNetUserClaims">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
                 <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUserLogins">
             <EntityTypeMapping TypeName="EventReportModel.AspNetUserLogin">
               <MappingFragment StoreEntitySet="AspNetUserLogins">
-                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
-                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUsers">
             <EntityTypeMapping TypeName="EventReportModel.AspNetUser">
               <MappingFragment StoreEntitySet="AspNetUsers">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
-                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
-                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
-                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
-                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
-                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
-                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Comments">
             <EntityTypeMapping TypeName="EventReportModel.Comment">
               <MappingFragment StoreEntitySet="Comments">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="IssueId" ColumnName="IssueId" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="IssueId" ColumnName="IssueId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="IssueCategories">
             <EntityTypeMapping TypeName="EventReportModel.IssueCategory">
               <MappingFragment StoreEntitySet="IssueCategories">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Issues">
             <EntityTypeMapping TypeName="EventReportModel.Issue">
               <MappingFragment StoreEntitySet="Issues">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
-                <ScalarProperty Name="SubcategoryId" ColumnName="SubcategoryId" />
-                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
-                <ScalarProperty Name="SeverityId" ColumnName="SeverityId" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="MapLat" ColumnName="MapLat" />
-                <ScalarProperty Name="MapLng" ColumnName="MapLng" />
-                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
-                <ScalarProperty Name="ViewsNo" ColumnName="ViewsNo" />
-                <ScalarProperty Name="VotesNo" ColumnName="VotesNo" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="VotesNo" ColumnName="VotesNo" />
+                <ScalarProperty Name="ViewsNo" ColumnName="ViewsNo" />
+                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+                <ScalarProperty Name="MapLng" ColumnName="MapLng" />
+                <ScalarProperty Name="MapLat" ColumnName="MapLat" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="SeverityId" ColumnName="SeverityId" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="SubcategoryId" ColumnName="SubcategoryId" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="IssueSubcategories">
             <EntityTypeMapping TypeName="EventReportModel.IssueSubcategory">
               <MappingFragment StoreEntitySet="IssueSubcategories">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Severities">
             <EntityTypeMapping TypeName="EventReportModel.Severity">
               <MappingFragment StoreEntitySet="Severities">
-                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Statuses">
             <EntityTypeMapping TypeName="EventReportModel.Status">
               <MappingFragment StoreEntitySet="Statuses">
-                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserProfiles">
             <EntityTypeMapping TypeName="EventReportModel.UserProfile">
               <MappingFragment StoreEntitySet="UserProfiles">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
                 <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="database_firewall_rules">
             <EntityTypeMapping TypeName="EventReportModel.database_firewall_rules">
               <MappingFragment StoreEntitySet="database_firewall_rules">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="start_ip_address" ColumnName="start_ip_address" />
-                <ScalarProperty Name="end_ip_address" ColumnName="end_ip_address" />
-                <ScalarProperty Name="create_date" ColumnName="create_date" />
                 <ScalarProperty Name="modify_date" ColumnName="modify_date" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="end_ip_address" ColumnName="end_ip_address" />
+                <ScalarProperty Name="start_ip_address" ColumnName="start_ip_address" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <AssociationSetMapping Name="AspNetUserRoles" TypeName="EventReportModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
-            <EndProperty Name="AspNetRoles">
-              <ScalarProperty Name="Id" ColumnName="RoleId" />
-            </EndProperty>
-            <EndProperty Name="AspNetUsers">
+            <EndProperty Name="AspNetUser">
               <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="AspNetRole">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>

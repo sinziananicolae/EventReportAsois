@@ -48,9 +48,10 @@
                     _scope.setSubcategories = _this._setSubcategories.bind(this);
                     _scope.saveIssue = _this._saveIssue.bind(this);
                     _scope.setFile = _this._setFile.bind(this);
+                    _scope.uploadFile = _this._uploadFile.bind(this);
                 },
 
-                _getCategories: function() {
+                _getCategories: function () {
                     var _scope = this.$scope, _this = this;
 
                     _this._CategoryService.get(function (response) {
@@ -59,7 +60,7 @@
                     });
                 },
 
-                _getSeverities: function() {
+                _getSeverities: function () {
                     var _scope = this.$scope, _this = this;
 
                     _this._SeverityService.get(function (response) {
@@ -68,13 +69,13 @@
                     });
                 },
 
-                _setSubcategories: function(categoryId) {
+                _setSubcategories: function (categoryId) {
                     var _scope = this.$scope, _this = this;
 
                     _scope.subCategories = _.findWhere(_scope.categories, { Id: categoryId }).Subcategories;
                 },
 
-                _initGMaps: function() {
+                _initGMaps: function () {
                     var _scope = this.$scope, _this = this;
 
                     function getLocation() {
@@ -91,7 +92,7 @@
                             zoom: zoom ? zoom : 16,
                             control: {},
                             events: {
-                                click: function(mapModel, eventName, originalEventArgs) {
+                                click: function (mapModel, eventName, originalEventArgs) {
                                     var e = originalEventArgs[0];
 
                                     var location = {
@@ -149,18 +150,18 @@
                     _scope.map.marker.coords.latitude = location.latitude;
                     _scope.map.marker.coords.longitude = location.longitude;
                     _scope.map.marker.address = location.address;
-               
+
                     //refresh map
                     _scope.control.refresh({ latitude: _scope.map.marker.coords.latitude, longitude: _scope.map.marker.coords.longitude });
                 },
 
-                _saveIssue: function(currentIssue) {
+                _saveIssue: function (currentIssue) {
                     var _scope = this.$scope, _this = this;
 
                     currentIssue.MapLat = _scope.map.marker.coords.latitude;
                     currentIssue.MapLng = _scope.map.marker.coords.longitude;
-                
-                    _this._IssueService.create(currentIssue, function(response) {
+
+                    _this._IssueService.create(currentIssue, function (response) {
                         _this._Log.info("Saved:", response);
 
                         var data = new FormData();
@@ -177,13 +178,32 @@
                     });
                 },
 
-                _setFile: function(element) {
+                _uploadFile: function () {
+                    var _this = this;
+
+                    console.log('Uploading file!');
+                    var uploadItem = document.getElementById('file').files[0];
+                    var fd = new FormData();
+                    fd.append('file', uploadItem);
+                    if (uploadItem) {
+                        this.$http.post("Home/UploadResource/1", fd, {
+                            transformRequest: angular.identity,
+                            headers: { 'Content-Type': undefined }
+                        }).success(function (data, status, headers, config) {
+                            console.log("success");
+                        }).error(function () {
+                            console.log("error");
+                        });
+                    }
+                },
+
+                _setFile: function (element) {
                     var _scope = this.$scope, _this = this;
 
                     _scope.currentIssue.Image = element.files[0];
                 },
 
-                _getAllIssues: function() {
+                _getAllIssues: function () {
                     var _scope = this.$scope, _this = this;
 
                     _this._IssueService.get(function (response) {

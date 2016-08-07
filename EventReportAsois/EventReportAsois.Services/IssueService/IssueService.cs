@@ -146,20 +146,19 @@ namespace EventReportAsois.Services.IssueService
             };
         }
 
-        //public object SaveImage(int id, HttpPostedFileBase image)
-        //{
-        //    var currentIssue = _DbEntities.Issues.FirstOrDefault(f => f.Id == id);
+        public object SaveImage(int id, string blobName)
+        {
+            var currentIssue = _DbEntities.Issues.FirstOrDefault(f => f.Id == id);
 
-        //    currentIssue.Image = new byte[image.ContentLength];
-        //    image.InputStream.Read(currentIssue.Image, 0, image.ContentLength);
-        //    _DbEntities.SaveChanges();
+            if (currentIssue != null) currentIssue.Image = blobName;
+            _DbEntities.SaveChanges();
 
-        //    return new
-        //    {
-        //        success = true,
-        //        message = "Success"
-        //    };
-        //}
+            return new
+            {
+                success = true,
+                message = "Success"
+            };
+        }
 
         public object UpdateIssue(int id, EventReportAsois.Data.Database.Issue issue)
         {

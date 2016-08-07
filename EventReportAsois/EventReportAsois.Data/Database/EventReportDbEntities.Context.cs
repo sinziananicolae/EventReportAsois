@@ -16,7 +16,7 @@ namespace EventReportAsois.Data.Database
     public partial class EventReportDbEntities : DbContext
     {
         public EventReportDbEntities()
-            : base("name=EventReportEDMX")
+            : base("name=EventReportDbEntities")
         {
         }
     

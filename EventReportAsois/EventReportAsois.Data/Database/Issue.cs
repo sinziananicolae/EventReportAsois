@@ -34,7 +34,7 @@ namespace EventReportAsois.Data.Database
         public Nullable<System.DateTime> TimeStamp { get; set; }
         public int ViewsNo { get; set; }
         public int VotesNo { get; set; }
-        public byte[] Image { get; set; }
+        public string Image { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comment> Comments { get; set; }

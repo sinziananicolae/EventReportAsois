@@ -27,15 +27,12 @@ namespace EventReportAsois.Services.CategoryService
                 {
                     subCategoriesForCategory.Add(new
                     {
-                        Id = subCategory.Id,
-                        Name = subCategory.Name,
-                        CategoryId = subCategory.CategoryId
+                        subCategory.Id, subCategory.Name, subCategory.CategoryId
                     });
                 }
                 allCategoriesList.Add(new
                 {
-                    Id = category.Id,
-                    Name = category.Name,
+                    category.Id, category.Name,
                     Subcategories = subCategoriesForCategory
                 });
             }

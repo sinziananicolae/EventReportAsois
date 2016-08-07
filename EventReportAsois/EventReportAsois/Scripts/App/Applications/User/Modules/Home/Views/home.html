@@ -9,6 +9,16 @@
     </div>
 </div>
 
+<div class="form-group col-md-12">
+    <div class="col-md-3 no-pad-left ">
+        <label for="issueAddress">Photo*</label>
+    </div>
+    <div class="col-md-9 no-pad-left ">
+        <input type="file" id="file" name="file" class="form-control" onchange="angular.element(this).scope().setFile(this)"/>
+        <button ng-click="uploadFile()">Upload</button>
+    </div>
+</div>
+
 
 <div class="col-xs-12 col-md-12 no-padding" id="map">
     <ui-gmap-google-map center="map.center" zoom="map.zoom" events="map.events" control="control">
