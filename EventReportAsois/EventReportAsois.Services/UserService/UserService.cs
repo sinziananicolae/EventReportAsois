@@ -21,5 +21,28 @@ namespace EventReportAsois.Services.UserService
             return _DbEntities.UserProfiles.ToList();
         }
 
+        public object RegisterUser(UserProfile userProfile) {
+            if (userProfile.UserName == null || userProfile.UserId == null ||
+                userProfile.Email == null)
+                return new
+                {
+                    success = false,
+                    message = "Field missing"
+                };
+            
+            _DbEntities.UserProfiles.Add(userProfile);
+            _DbEntities.SaveChanges();
+
+            return new
+            {
+                success = true,
+                message = "Success",
+                data = new
+                {
+                    Id = userProfile.Id
+                }
+            };
+        }
+
     }
 }

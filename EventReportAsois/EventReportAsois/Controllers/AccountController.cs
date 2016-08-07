@@ -9,6 +9,9 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using EventReportAsois.Models;
+using EventReportAsois.Services.UserService;
+using EventReportAsois.Data.Database;
+using Microsoft.ApplicationInsights.Web;
 
 namespace EventReportAsois.Controllers
 {
@@ -17,9 +20,11 @@ namespace EventReportAsois.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private UserService _UserService;
 
         public AccountController()
         {
+            _UserService = new UserService();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -153,8 +158,20 @@ namespace EventReportAsois.Controllers
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
+
                 if (result.Succeeded)
                 {
+                    var userProfile = new UserProfile
+                    {
+                        UserId = user.Id,
+                        UserName = model.UserName,
+                        FirstName = model.FirstName,
+                        LastName = model.LastName,
+                        Email = model.Email
+                    };
+
+                    _UserService.RegisterUser(userProfile);
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
