@@ -21,7 +21,7 @@ namespace EventReportAsois.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("EventReportDbEntities", throwIfV1Schema: false)
+            : base("EventReportDb", throwIfV1Schema: false)
         {
         }
 
