@@ -1,0 +1,107 @@
+﻿<div class="modal fade" id="addIssueModal" tabindex="-1" role="dialog"
+     aria-labelledby="addIssueModal" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="width: 500px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                        data-ng-click="currentIssue={}">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Add Issue</h4>
+            </div>
+            <div class="modal-body" style="height: 340px">
+                <form name="issueForm" novalidate="">
+                    <div class="form-group col-md-12"
+                         data-ng-class="{ 'has-error' : issueForm.issueTitle.$invalid }">
+                        <div class=" col-md-3 no-pad-left ">
+                            <label for="issueTitle">Title*</label>
+                        </div>
+                        <div class=" col-md-9 no-pad-left ">
+                            <input type="text" class="form-control" id="issueTitle"
+                                   name="issueTitle" data-ng-model="currentIssue.Title"
+                                   required/>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-12"
+                         data-ng-class="{ 'has-error' : issueForm.issueCategory.$invalid }">
+                        <div class=" col-md-3 no-pad-left ">
+                            <label for="issueCategory">Category*</label>
+                        </div>
+                        <div class=" col-md-9 no-pad-left ">
+                            <select name="issueCategory" class="form-control"
+                                    ng-options="category.Id as category.Name for category in categories"
+                                    ng-model="currentIssue.CategoryId" ng-change="setSubcategories(currentIssue.CategoryId)" required></select>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <div class=" col-md-3 no-pad-left ">
+                            <label for="issueSubCategory">Subcategory</label>
+                        </div>
+                        <div class=" col-md-9 no-pad-left">
+                            <select name="issueSubCategory" class="form-control" ng-disabled="!currentIssue.CategoryId"
+                                    ng-options="subCategory.Id as subCategory.Name for subCategory in subCategories"
+                                    ng-model="currentIssue.SubcategoryId"></select>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-12" 
+                         data-ng-class="{ 'has-error' : issueForm.issueSeverity.$invalid }">
+                        <div class=" col-md-3 no-pad-left ">
+                            <label for="issueSeverity">Severity*</label>
+                        </div>
+                        <div class=" col-md-9 no-pad-left">
+                            <select name="issueSeverity" class="form-control"
+                                    ng-options="severity.Id as severity.Name for severity in severities"
+                                    ng-model="currentIssue.SeverityId" required></select>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <div class=" col-md-3 no-pad-left ">
+                            <label for="issueAddress">Address</label>
+                        </div>
+                        <div class=" col-md-9 no-pad-left ">
+                            <input type="text" class="form-control" id="issueAddress"
+                                   name="issueAddress" data-ng-model="currentIssue.Address"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <div class=" col-md-3 no-pad-left ">
+                            <label for="issueAddress">Description</label>
+                        </div>
+                        <div class=" col-md-9 no-pad-left ">
+                            <textarea type="text" class="form-control" id="issueDescription"
+                                      name="issueDescription" data-ng-model="currentIssue.Description"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <div class=" col-md-3 no-pad-left ">
+                            <label for="issueAddress">Photo*</label>
+                        </div>
+                        <div class="col-md-9 no-pad-left ">
+                            <input type="file" id="file" name="file" class="form-control" onchange="angular.element(this).scope().setFile(this)"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div style="clear:both;"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"
+                        data-ng-click="currentIssue={}">
+                    Cancel
+                </button>
+                <button type="button" class="btn btn-primary btn-sm"
+                        data-dismiss="modal" data-ng-disabled="issueForm.$invalid"
+                        data-ng-click="saveIssue(currentIssue)">
+                    Save
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
