@@ -164,21 +164,11 @@
                     _this._IssueService.create(currentIssue, function (response) {
                         _this._Log.info("Saved:", response);
 
-                        var data = new FormData();
-
-                        data.append("id", response.data.Id);
-                        data.append('File', currentIssue.Image);
-
-                        _this.$http.post("Home/SaveIssue", data, {
-                            transformRequest: angular.identity,
-                            headers: { 'Content-Type': undefined }
-                        }).success(function (response) {
-                            console.log(response);
-                        });
+                        _this._uploadFile(response.data.Id);
                     });
                 },
 
-                _uploadFile: function () {
+                _uploadFile: function (id) {
                     var _this = this;
 
                     console.log('Uploading file!');
@@ -186,7 +176,7 @@
                     var fd = new FormData();
                     fd.append('file', uploadItem);
                     if (uploadItem) {
-                        this.$http.post("Home/UploadResource/1", fd, {
+                        _this.$http.post("Home/UploadResource/" + id, fd, {
                             transformRequest: angular.identity,
                             headers: { 'Content-Type': undefined }
                         }).success(function (data, status, headers, config) {
@@ -209,7 +199,22 @@
                     _this._IssueService.get(function (response) {
                         _this._Log.info("Saved:", response);
 
-                        _scope.allIssues = response.data[0];
+                        _scope.allIssues = response.data;
+                        _scope.markers = [];
+
+                        _.each(_scope.allIssues, function (marker) {
+                            _scope.markers.push(
+                                {
+                                    id: marker.Id,
+                                    latitude: marker.MapLat,
+                                    longitude: marker.MapLng,
+                                    title: marker.Title,
+                                    description: marker.Description,
+                                    startDate: marker.TimeStamp,
+                                    show: false,
+                                    icon: "Content/Images/Maps/recycle.png"
+                                });
+                        });
                     });
                 },
 

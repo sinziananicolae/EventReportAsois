@@ -100,7 +100,7 @@ namespace EventReportAsois.Services.IssueService
                     message = "Field missing"
                 };
 
-            Status defaultStatus = _DbEntities.Statuses.FirstOrDefault(f => f.Name == "Open");
+            Status defaultStatus = _DbEntities.Statuses.FirstOrDefault(f => f.Name == "Pending");
             issue.StatusId = defaultStatus.Id;
             issue.TimeStamp = DateTime.Now;
             issue.VotesNo = 0;
