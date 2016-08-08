@@ -43,3 +43,13 @@ INSERT INTO IssueSubcategories (Name, Description, CategoryId) Values ('Environm
 INSERT INTO IssueSubcategories (Name, Description, CategoryId) Values ('Roads', '', 6);
 INSERT INTO IssueSubcategories (Name, Description, CategoryId) Values ('Public places', '', 6);
 INSERT INTO IssueSubcategories (Name, Description, CategoryId) Values ('Other', '', 6);
+
+--- Statuses ---
+
+INSERT INTO Statuses (Name) Values ('Pending');
+INSERT INTO Statuses (Name) Values ('Active');
+INSERT INTO Statuses (Name) Values ('Inspected');
+INSERT INTO Statuses (Name) Values ('Canceled');
+INSERT INTO Statuses (Name) Values ('In progress');
+INSERT INTO Statuses (Name) Values ('Expired');
+INSERT INTO Statuses (Name) Values ('Resolved');
