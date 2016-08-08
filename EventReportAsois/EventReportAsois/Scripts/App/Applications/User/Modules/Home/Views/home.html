@@ -17,13 +17,28 @@
         <ui-gmap-markers models="markers" coords="'self'" icon="'icon'" click="onClick">
             <ui-gmap-windows show="show">
                 <div ng-non-bindable>
-                    <b>{{title}}</b><br />
-                    {{description}} <br />
+                    <b>{{title}}</b><br/>
+                    {{description}} <br/>
                     {{startDate | date : 'd/MM/yyyy'}}
                 </div>
             </ui-gmap-windows>
         </ui-gmap-markers>
     </ui-gmap-google-map>
+</div>
+<div class="col-xs-12 col-md-12 no-padding" style="margin-top: 50px">
+    <div class="col-md-4" ng-repeat="issue in allIssues">
+        <div style="height: 150px; border: 1px solid white;">
+            <img ng-src="{{blobSrc}}{{issue.Image}}" style="height: 100%; float: left"/>
+            <div style="padding-left: 45%;">
+                <div><b style="font-size: 20px">{{issue.Title}}</b></div>
+                <div><span style="font-size: 15px">{{issue.Description}}</span></div>
+                <div><span style="font-size: 15px">{{issue.Category.Name}}: {{issue.Subcategory.Name}}</span></div>
+                <div><span style="font-size: 15px">{{issue.Address}}</span></div>
+                <div><span style="font-size: 15px">{{issue.Status.Name}}</span></div>
+                <div><span style="font-size: 15px">{{issue.Severity.Name}}</span></div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!--<img ng-src="data:image/JPEG;base64,{{allIssues.Image}}">-->
@@ -34,7 +49,7 @@
     }
 
     .angular-google-map-container {
-        height: 700px;
+        height: 500px;
     }
 
     .p-20 {

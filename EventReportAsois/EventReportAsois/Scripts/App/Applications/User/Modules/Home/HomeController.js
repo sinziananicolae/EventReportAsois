@@ -39,6 +39,7 @@
                     this._Log.info("Controller loaded!");
 
                     _scope.control = {};
+                    _scope.blobSrc = "https://eventreportasois.blob.core.windows.net/eventreportimg/";
                     _this._initGMaps();
 
                     _this._getCategories();
@@ -47,8 +48,6 @@
 
                     _scope.setSubcategories = _this._setSubcategories.bind(this);
                     _scope.saveIssue = _this._saveIssue.bind(this);
-                    _scope.setFile = _this._setFile.bind(this);
-                    _scope.uploadFile = _this._uploadFile.bind(this);
                 },
 
                 _getCategories: function () {
@@ -181,16 +180,11 @@
                             headers: { 'Content-Type': undefined }
                         }).success(function (data, status, headers, config) {
                             console.log("success");
+                            _this._getAllIssues();
                         }).error(function () {
                             console.log("error");
                         });
                     }
-                },
-
-                _setFile: function (element) {
-                    var _scope = this.$scope, _this = this;
-
-                    _scope.currentIssue.Image = element.files[0];
                 },
 
                 _getAllIssues: function () {
