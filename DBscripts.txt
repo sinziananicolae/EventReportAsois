@@ -4,3 +4,42 @@ INSERT INTO Severities (Name) VALUES ('Low');
 INSERT INTO Severities (Name) VALUES ('Medium');
 INSERT INTO Severities (Name) VALUES ('High');
 INSERT INTO Severities (Name) VALUES ('Critical');
+
+--- Issue Categories ---
+
+INSERT INTO IssueCategories (Name, Description) Values ('Environment', 'Damage to the physical environment mostly caused by people.');
+INSERT INTO IssueCategories (Name, Description) Values ('Public Transportation', 'Issues regarding the public means of transport.');
+INSERT INTO IssueCategories (Name, Description) Values ('Roads', 'Issues regarding the infrastructure and the transportation routes.');
+INSERT INTO IssueCategories (Name, Description) Values ('Urban Planning', 'Building infrastructure, parks, sites in construction.');
+INSERT INTO IssueCategories (Name, Description) Values ('Police Department', 'Issues concerning the police department.');
+INSERT INTO IssueCategories (Name, Description) Values ('Suggestions', 'Improvement points');
+INSERT INTO IssueCategories (Name, Description) Values ('Other', '');
+
+--- Issue SubCategories ---
+
+INSERT INTO IssueSubcategories (Name, Description, CategoryId) Values ('Garbage disposal', 'Innapropriate waste disposal', 1);
+INSERT INTO IssueSubcategories (Name, Description, CategoryId) Values ('Air pollution', 'Disturbing / unauthorized air pollution', 1);
+INSERT INTO IssueSubcategories (Name, Description, CategoryId) Values ('Water pollution', 'Water supply issues', 1);
+INSERT INTO IssueSubcategories (Name, Description, CategoryId) Values ('Other', '', 1);
+
+INSERT INTO IssueSubcategories (Name, Description, CategoryId) Values ('Accident', 'Signal an accident', 2);
+INSERT INTO IssueSubcategories (Name, Description, CategoryId) Values ('Overcrowded route', 'Routes with overcrowded means of transport', 2);
+INSERT INTO IssueSubcategories (Name, Description, CategoryId) Values ('Schedule', 'Issues in the schedule', 2);
+INSERT INTO IssueSubcategories (Name, Description, CategoryId) Values ('Other', '', 2);
+
+INSERT INTO IssueSubcategories (Name, Description, CategoryId) Values ('Potholes', 'Potholes in the road', 3);
+INSERT INTO IssueSubcategories (Name, Description, CategoryId) Values ('Construction zone', 'Road in construction', 3);
+INSERT INTO IssueSubcategories (Name, Description, CategoryId) Values ('Traffic congestion', 'Crowded traffic', 3);
+INSERT INTO IssueSubcategories (Name, Description, CategoryId) Values ('Redirected traffic', 'Closed roads due to different events', 3);
+INSERT INTO IssueSubcategories (Name, Description, CategoryId) Values ('Other', '', 3);
+
+INSERT INTO IssueSubcategories (Name, Description, CategoryId) Values ('Dangerous construction', 'Dangerous buildings', 4);
+INSERT INTO IssueSubcategories (Name, Description, CategoryId) Values ('Other', '', 4);
+
+INSERT INTO IssueSubcategories (Name, Description, CategoryId) Values ('Illegal parking', 'Illegally parked vehicles', 5);
+INSERT INTO IssueSubcategories (Name, Description, CategoryId) Values ('Other', '', 5);
+
+INSERT INTO IssueSubcategories (Name, Description, CategoryId) Values ('Environment', '', 6);
+INSERT INTO IssueSubcategories (Name, Description, CategoryId) Values ('Roads', '', 6);
+INSERT INTO IssueSubcategories (Name, Description, CategoryId) Values ('Public places', '', 6);
+INSERT INTO IssueSubcategories (Name, Description, CategoryId) Values ('Other', '', 6);
