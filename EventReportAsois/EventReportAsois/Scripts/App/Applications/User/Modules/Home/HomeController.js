@@ -39,6 +39,7 @@
                     this._Log.info("Controller loaded!");
 
                     _scope.control = {};
+                    _scope.markers = [];
                     _scope.blobSrc = "https://eventreportasois.blob.core.windows.net/eventreportimg/";
                     _this._initGMaps();
 
@@ -197,6 +198,7 @@
                         _scope.markers = [];
 
                         _.each(_scope.allIssues, function (marker) {
+                            var subCategoryImageId = marker.Subcategory.CategoryId === 7 ? 1 : marker.Subcategory.Id;
                             _scope.markers.push(
                                 {
                                     id: marker.Id,
@@ -206,7 +208,7 @@
                                     description: marker.Description,
                                     startDate: marker.TimeStamp,
                                     show: false,
-                                    icon: "Content/Images/Maps/recycle.png"
+                                    icon: "Content/Images/Maps/" + marker.Category.Id + "." + subCategoryImageId + "." + marker.Severity.Id + ".png"
                                 });
                         });
                     });
