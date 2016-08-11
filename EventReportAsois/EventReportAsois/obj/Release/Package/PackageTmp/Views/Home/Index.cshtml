@@ -1,0 +1,100 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@section scripts{
+    @Scripts.Render("~/bundles/app-user")
+}
+
+<body ng-app="app" id="app" class="hold-transition skin-blue sidebar-mini skin-green fixed" data-custom-theme-functions>
+    <div class="wrapper">
+
+        <header class="main-header">
+            <a href="#/home" class="logo">
+                <span class="logo-mini"><b>E</b>R</span>
+                <span class="logo-lg"><b>Event</b>Report</span>
+            </a>
+
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <a class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <!-- User Account: style can be found in dropdown.less -->
+                        <li class="dropdown user user-menu">
+                            <a class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="./../../Content/Theme/img/avatar2.png" class="user-image" alt="User Image">
+                                <span class="hidden-xs">Alexander Pierce</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header">
+                                    <img src="./../../Content/Theme/img/avatar2.png" class="img-circle" alt="User Image">
+                                    <p>
+                                        User Name
+                                        <small>Member since ...</small>
+                                    </p>
+                                </li>
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a class="btn btn-default btn-flat">Profile</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="/Account/LogOff" class="btn btn-default btn-flat">Sign out</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+                <!-- Sidebar user panel -->
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="./../../Content/Theme/img/avatar2.png" class="img-circle" alt="User Image">
+                    </div>
+                    <div class="pull-left info">
+                        <p>User Name</p>
+                        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                    </div>
+                </div>
+                <!-- sidebar menu: : style can be found in sidebar.less -->
+                <ul class="sidebar-menu">
+                    <li class="header">MAIN NAVIGATION</li>
+                    <li class="active treeview">
+                        <a href="#/home">
+                            <i class="fa fa-dashboard"></i> <span>Dashboard</span> <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+            <!-- /.sidebar -->
+        </aside>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <section class="content">
+                <div ng-view></div>
+            </section>
+        </div><!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                <b>Version</b> 1.0
+            </div>
+            <span>Copyright <span>&copy; @DateTime.Now.Year - Event Report</span>.</span> All rights reserved.
+        </footer>
+        <!-- Add the sidebar's background. This div must be placed
+             immediately after the control sidebar -->
+        <div class="control-sidebar-bg"></div>
+    </div><!-- ./wrapper -->
+
+</body>
+

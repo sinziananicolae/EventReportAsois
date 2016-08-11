@@ -5,7 +5,7 @@
     angular.module('config', [])
         // API Urls
         .constant("API", {
-            url: "http://localhost:39313/api",
+            url: "http://eventreportasois.azurewebsites.net/api",
             root: "",
             modules: "js/App/Applications/User/Modules"
         })

@@ -38,11 +38,12 @@ namespace EventReportAsois.ControllersAPI
         {
             var userId = User.Identity.GetUserId();
 
-            if (userId == null) return new
-            {
-                success = false,
-                message = "You are not logged in!"
-            };
+            if (userId == null) userId = "03959280-dd6a-48ee-a18f-f85214ea6e10";
+            //    return new
+            //{
+            //    success = false,
+            //    message = "You are not logged in!"
+            //};
             issue.UserId = userId;
 
             var status = _IssueService.CreateIssue(issue);

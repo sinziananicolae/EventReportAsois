@@ -39,6 +39,9 @@
                     this._Log.info("Controller loaded!");
 
                     _scope.control = {};
+                    _scope.debug = "afara";
+                    _scope.markers = [];
+                    _scope.blobSrc = "https://eventreportasois.blob.core.windows.net/eventreportimg/";
                     _this._initGMaps();
 
                     _this._getCategories();
@@ -47,19 +50,20 @@
 
                     _scope.setSubcategories = _this._setSubcategories.bind(this);
                     _scope.saveIssue = _this._saveIssue.bind(this);
-                    _scope.setFile = _this._setFile.bind(this);
                 },
 
-                _getCategories: function() {
+                _getCategories: function () {
                     var _scope = this.$scope, _this = this;
+                    _scope.debug = "aicisa" + _this._API;
 
                     _this._CategoryService.get(function (response) {
+                        _scope.debug = response;
                         _scope.categories = response.data;
                         _this._Log.info("Categories:", response);
                     });
                 },
 
-                _getSeverities: function() {
+                _getSeverities: function () {
                     var _scope = this.$scope, _this = this;
 
                     _this._SeverityService.get(function (response) {
@@ -68,13 +72,13 @@
                     });
                 },
 
-                _setSubcategories: function(categoryId) {
+                _setSubcategories: function (categoryId) {
                     var _scope = this.$scope, _this = this;
 
                     _scope.subCategories = _.findWhere(_scope.categories, { Id: categoryId }).Subcategories;
                 },
 
-                _initGMaps: function() {
+                _initGMaps: function () {
                     var _scope = this.$scope, _this = this;
 
                     function getLocation() {
@@ -91,7 +95,7 @@
                             zoom: zoom ? zoom : 16,
                             control: {},
                             events: {
-                                click: function(mapModel, eventName, originalEventArgs) {
+                                click: function (mapModel, eventName, originalEventArgs) {
                                     var e = originalEventArgs[0];
 
                                     var location = {
@@ -149,47 +153,67 @@
                     _scope.map.marker.coords.latitude = location.latitude;
                     _scope.map.marker.coords.longitude = location.longitude;
                     _scope.map.marker.address = location.address;
-               
+
                     //refresh map
                     _scope.control.refresh({ latitude: _scope.map.marker.coords.latitude, longitude: _scope.map.marker.coords.longitude });
                 },
 
-                _saveIssue: function(currentIssue) {
+                _saveIssue: function (currentIssue) {
                     var _scope = this.$scope, _this = this;
 
                     currentIssue.MapLat = _scope.map.marker.coords.latitude;
                     currentIssue.MapLng = _scope.map.marker.coords.longitude;
-                
-                    _this._IssueService.create(currentIssue, function(response) {
+
+                    _this._IssueService.create(currentIssue, function (response) {
                         _this._Log.info("Saved:", response);
 
-                        var data = new FormData();
-
-                        data.append("id", response.data.Id);
-                        data.append('File', currentIssue.Image);
-
-                        _this.$http.post("Home/SaveIssue", data, {
-                            transformRequest: angular.identity,
-                            headers: { 'Content-Type': undefined }
-                        }).success(function (response) {
-                            console.log(response);
-                        });
+                        _this._uploadFile(response.data.Id);
                     });
                 },
 
-                _setFile: function(element) {
-                    var _scope = this.$scope, _this = this;
+                _uploadFile: function (id) {
+                    var _this = this;
 
-                    _scope.currentIssue.Image = element.files[0];
+                    console.log('Uploading file!');
+                    var uploadItem = document.getElementById('file').files[0];
+                    var fd = new FormData();
+                    fd.append('file', uploadItem);
+                    if (uploadItem) {
+                        _this.$http.post("http://localhost:39313/Home/UploadResource/" + id, fd, {
+                            transformRequest: angular.identity,
+                            headers: { 'Content-Type': undefined }
+                        }).success(function (data, status, headers, config) {
+                            console.log("success");
+                            _this._getAllIssues();
+                        }).error(function () {
+                            console.log("error");
+                        });
+                    }
                 },
 
-                _getAllIssues: function() {
+                _getAllIssues: function () {
                     var _scope = this.$scope, _this = this;
 
                     _this._IssueService.get(function (response) {
                         _this._Log.info("Saved:", response);
 
-                        _scope.allIssues = response.data[0];
+                        _scope.allIssues = response.data;
+                        _scope.markers = [];
+
+                        _.each(_scope.allIssues, function (marker) {
+                            var subCategoryImageId = marker.Subcategory.CategoryId === 7 ? 1 : marker.Subcategory.Id;
+                            _scope.markers.push(
+                                {
+                                    id: marker.Id,
+                                    latitude: marker.MapLat,
+                                    longitude: marker.MapLng,
+                                    title: marker.Title,
+                                    description: marker.Description,
+                                    startDate: marker.TimeStamp,
+                                    show: false,
+                                    icon: "css/Images/Maps/" + marker.Category.Id + "." + subCategoryImageId + "." + marker.Severity.Id + ".png"
+                                });
+                        });
                     });
                 },
 

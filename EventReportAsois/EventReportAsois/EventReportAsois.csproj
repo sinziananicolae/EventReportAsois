@@ -479,6 +479,7 @@
     <Content Include="Content\Core\FontAwesome\fonts\fontawesome-webfont.woff2" />
     <Content Include="Content\Core\FontAwesome\fonts\FontAwesome.otf" />
     <None Include="Project_Readme.html" />
+    <None Include="Properties\PublishProfiles\EventReportAsois - Web Deploy.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -512,6 +513,8 @@
           <DevelopmentServerPort>39313</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:39313/</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://127.0.0.1:39313/</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

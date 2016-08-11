@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - My ASP.NET MVC Application</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/jquery-ui-css")
+    @Styles.Render("~/Content/bootstrap-css")
+    @Styles.Render("~/Content/toastr-css")
+    @Styles.Render("~/Content/font-awesome-css")
+    @Styles.Render("~/Content/theme-css")
+    @* @Styles.Render("~/Content/app-css")*@
+</head>
+@RenderBody()
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/lodash")
+@Scripts.Render("~/bundles/slimScroll")
+@Scripts.Render("~/bundles/angular")
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/underscore")
+@Scripts.Render("~/bundles/toastr")
+@Scripts.Render("~/bundles/class")
+@Scripts.Render("~/bundles/logger")
+@Scripts.Render("~/bundles/app-common")
+
+@RenderSection("scripts", required: false)
+</html>
