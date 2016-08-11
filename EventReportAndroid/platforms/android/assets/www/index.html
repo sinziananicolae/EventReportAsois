@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2016 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+    <meta http-equiv="Content-Security-Policy"
+              content="default-src *;
+                       style-src 'self' 'unsafe-inline'
+                                  https://*.googleapis.com;
+                       script-src 'self' 'unsafe-inline' 'unsafe-eval'
+                                   https://*.googleapis.com">
+    <!-- Good default declaration:
+    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+        * Enable inline JS: add 'unsafe-inline' to default-src
+        * Enable eval(): add 'unsafe-eval' to default-src
+    * Create your own at http://cspisawesome.com
+    -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+    <link rel="stylesheet" type="text/css" href="css/Core/Bootstrap/css/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="css/Core/Bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/Core/FontAwesome/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="css/Core/JQuery-UI/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/Core/JQuery-UI/jquery-ui.structure.css" />
+    <link rel="stylesheet" type="text/css" href="css/Core/JQuery-UI/jquery-ui.theme.css" />
+    <link rel="stylesheet" type="text/css" href="css/Core/Toastr/toastr.css" />
+    <link rel="stylesheet" type="text/css" href="css/Theme/Theme.css" />
+    <link rel="stylesheet" type="text/css" href="css/Theme/skins/skin-green.css" />
+    <link rel="stylesheet" type="text/css" href="css/App/Site.css" />
+
+    <!-- <link rel="stylesheet" type="text/css" href="css/index.css" /> -->
+    <title>Event Report</title>
+</head>
+
+<body ng-app="app" id="app" class="hold-transition skin-blue sidebar-mini skin-green fixed" data-custom-theme-functions>
+    <!--  <div>
+       
+        <div ng-view data-custom-theme-functions></div>
+    </div>
+ -->
+
+    <div class="wrapper">
+        <div id="deviceready"></div>
+        <header class="main-header">
+            <a href="#/home" class="logo">
+                <span class="logo-mini"><b>E</b>R</span>
+                <span class="logo-lg"><b>Event</b>Report</span>
+            </a>
+
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <a class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <!-- User Account: style can be found in dropdown.less -->
+                        <li class="dropdown user user-menu">
+                            <a class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="css/Theme/img/avatar2.png" class="user-image" alt="User Image">
+                                <span class="hidden-xs">Alexander Pierce</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header">
+                                    <img src="css/Theme/img/avatar2.png" class="img-circle" alt="User Image">
+                                    <p>
+                                        User Name
+                                        <small>Member since ...</small>
+                                    </p>
+                                </li>
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a class="btn btn-default btn-flat">Profile</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="/Account/Logout" class="btn btn-default btn-flat">Sign out</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+                <!-- Sidebar user panel -->
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="css/Theme/img/avatar2.png" class="img-circle" alt="User Image">
+                    </div>
+                    <div class="pull-left info">
+                        <p>User Name</p>
+                        <a><i class="fa fa-circle text-success"></i> Online</a>
+                    </div>
+                </div>
+                <!-- sidebar menu: : style can be found in sidebar.less -->
+                <ul class="sidebar-menu">
+                    <li class="header">MAIN NAVIGATION</li>
+                    <li class="active treeview">
+                        <a href="#/home">
+                            <i class="fa fa-dashboard"></i> <span>Dashboard</span> <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+            <!-- /.sidebar -->
+        </aside>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <div ng-view></div>
+        </div><!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                <b>Version</b> 1.0
+            </div>
+            <span>Copyright <span>&copy; @DateTime.Now.Year - Event Report</span>.</span> All rights reserved.
+        </footer>
+        <!-- Add the sidebar's background. This div must be placed
+             immediately after the control sidebar -->
+        <div class="control-sidebar-bg"></div>
+    </div><!-- ./wrapper -->
+
+
+
+
+
+
+
+    <script type="text/javascript" src="cordova.js"></script>
+
+    <script type="text/javascript" src="js/Core/JQuery/jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="js/Core/JQuery/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/Core/Bootstrap/bootstrap.js"></script>
+    <script type="text/javascript" src="js/Core/AngularJS/angular.js"></script>
+    <script type="text/javascript" src="js/Core/AngularJS/angular-route.js"></script>
+    <script type="text/javascript" src="js/Core/AngularJS/angular-resource.js"></script>
+    <script type="text/javascript" src="js/Core/AngularJS/angular-animate.js"></script>
+    <script type="text/javascript" src="js/Core/AngularJS/angular-touch.min.js"></script>
+    <script type="text/javascript" src="js/Core/AngularJS/angular-cookies.js"></script>
+    <script type="text/javascript" src="js/Core/AngularJS/angular-sanitize.js"></script>
+    <script type="text/javascript" src="js/Core/AngularJS/angular-google-maps.js"></script>
+    <script type="text/javascript" src="js/Core/AngularJS/angular-simple-logger.js"></script>
+    <script type="text/javascript" src="js/Core/Bootstrap/ui-bootstrap-tpls-0.14.3.js"></script>
+
+    <script type="text/javascript" src="js/Core/Underscore/underscore.js"></script>
+
+    <script type="text/javascript" src="js/Core/Class/class.js"></script>
+    <script type="text/javascript" src="js/Core/Class/namespace.js"></script>
+
+    <script type="text/javascript" src="js/Core/Lodash/lodash.js"></script>
+
+    <script type="text/javascript" src="js/Core/Logger/logger.js"></script>
+
+    <script type="text/javascript" src="js/Core/SlimScroll/jquery.slimscroll.js"></script>
+
+    <script type="text/javascript" src="js/Core/Toastr/toastr.js"></script>
+
+    <script type="text/javascript" src="js/index.js"></script>
+
+    <script type="text/javascript" src="js/App/Applications/User/app.js"></script>
+    <script type="text/javascript" src="js/App/Applications/User/config.js"></script>
+    <script type="text/javascript" src="js/App/Applications/User/routes.js"></script>
+    <script type="text/javascript" src="js/App/Applications/User/services.js"></script>
+
+    <script type="text/javascript" src="js/App/Components/BaseController.js"></script>
+    <script type="text/javascript" src="js/App/Components/DOMHelpers.js"></script>
+    <script type="text/javascript" src="js/App/Components/EventDispatcher.js"></script>
+    <script type="text/javascript" src="js/App/Components/httpRequestTracker.js"></script>
+
+    <script type="text/javascript" src="js/App/Common/Directives/directives.js"></script>
+
+    <script type="text/javascript" src="js/Theme/custom.js"></script>
+
+    <script type="text/javascript" src="js/App/Applications/User/Modules/Home/HomeController.js"></script>
+</body>
+
+</html>
