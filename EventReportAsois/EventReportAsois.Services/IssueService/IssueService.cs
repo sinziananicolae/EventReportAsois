@@ -134,7 +134,7 @@ namespace EventReportAsois.Services.IssueService
             string AuthToken = "2a3967ee9bda822e0023a8bc2f7e6dc0";
 
             var twilio = new TwilioRestClient(AccountSid, AuthToken);
-            var message = twilio.SendMessage("+17732957889", "+40740875808", "A new issue has been registered with id " + issue.Id, "");
+            var message = twilio.SendMessage("+17732957889", "+40740875808", "A new issue has been registered", "");
             #endregion
 
             return new
