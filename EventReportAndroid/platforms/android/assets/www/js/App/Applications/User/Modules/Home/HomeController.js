@@ -179,7 +179,7 @@
                     var fd = new FormData();
                     fd.append('file', uploadItem);
                     if (uploadItem) {
-                        _this.$http.post("http://localhost:39313/Home/UploadResource/" + id, fd, {
+                        _this.$http.post("http://eventreportasois.azurewebsites.net/Home/UploadResource/" + id, fd, {
                             transformRequest: angular.identity,
                             headers: { 'Content-Type': undefined }
                         }).success(function (data, status, headers, config) {
