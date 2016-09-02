@@ -1,3 +1,4 @@
+E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Services\obj\Debug\EventReportAsois.Services.csprojResolveAssemblyReference.cache
 E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Services\bin\Debug\EventReportAsois.Services.dll.config
 E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Services\bin\Debug\EventReportAsois.Services.dll
 E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Services\bin\Debug\EventReportAsois.Services.pdb
@@ -65,6 +66,5 @@ E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Services\bin\De
 E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Services\bin\Debug\ru\System.Spatial.resources.dll
 E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Services\bin\Debug\zh-Hans\System.Spatial.resources.dll
 E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Services\bin\Debug\zh-Hant\System.Spatial.resources.dll
-E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Services\obj\Debug\EventReportAsois.Services.csprojResolveAssemblyReference.cache
 E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Services\obj\Debug\EventReportAsois.Services.dll
 E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Services\obj\Debug\EventReportAsois.Services.pdb

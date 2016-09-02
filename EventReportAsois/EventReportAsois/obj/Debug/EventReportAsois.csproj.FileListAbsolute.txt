@@ -86,6 +86,7 @@ E:\Documents\Master\ASOIS\EventReportAsois\EventReportAsois\bin\Microsoft.Owin.S
 E:\Documents\Master\ASOIS\EventReportAsois\EventReportAsois\obj\Debug\EventReportAsois.csprojResolveAssemblyReference.cache
 E:\Documents\Master\ASOIS\EventReportAsois\EventReportAsois\obj\Debug\EventReportAsois.dll
 E:\Documents\Master\ASOIS\EventReportAsois\EventReportAsois\obj\Debug\EventReportAsois.pdb
+E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois\obj\Debug\EventReportAsois.csprojResolveAssemblyReference.cache
 E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois\bin\ApplicationInsights.config
 E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois\bin\roslyn\csc.exe
 E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -226,6 +227,8 @@ E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois\bin\ko\System.S
 E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois\bin\ru\System.Spatial.resources.dll
 E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois\bin\zh-Hans\System.Spatial.resources.dll
 E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois\bin\zh-Hant\System.Spatial.resources.dll
-E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois\obj\Debug\EventReportAsois.csprojResolveAssemblyReference.cache
 E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois\obj\Debug\EventReportAsois.dll
 E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois\obj\Debug\EventReportAsois.pdb
+E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois\bin\Twilio.Api.dll
+E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois\bin\Twilio.Api.pdb
+E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois\bin\Twilio.Api.xml

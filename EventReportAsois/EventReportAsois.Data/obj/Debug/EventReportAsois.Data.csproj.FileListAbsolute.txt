@@ -58,6 +58,5 @@ E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Data\bin\Debug\
 E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Data\bin\Debug\ru\System.Spatial.resources.dll
 E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Data\bin\Debug\zh-Hans\System.Spatial.resources.dll
 E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Data\bin\Debug\zh-Hant\System.Spatial.resources.dll
-E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Data\obj\Debug\EventReportAsois.Data.csprojResolveAssemblyReference.cache
 E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Data\obj\Debug\EventReportAsois.Data.dll
 E:\Documents\Master\ASOIS\Tema\EventReportAsois\EventReportAsois.Data\obj\Debug\EventReportAsois.Data.pdb

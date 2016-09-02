@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using EventReportAsois.Data.Database;
+using Twilio;
 
 namespace EventReportAsois.Services.IssueService
 {
@@ -110,29 +112,29 @@ namespace EventReportAsois.Services.IssueService
             _DbEntities.SaveChanges();
 
             #region SendEmail
-            //MailMessage mail = new MailMessage("event.report.office@gmail.com", "event.report.office@gmail.com");
-            //mail.Subject = "[Event Report] Issue #" + issue.Id + " has been reported!";
-            //mail.Body = "Title: " + issue.Title + "<br/> Description: " + issue.Description;
+            MailMessage mail = new MailMessage("event.report.office@gmail.com", "event.report.office@gmail.com");
+            mail.Subject = "[Event Report] Issue #" + issue.Id + " has been reported!";
+            mail.Body = "Title: " + issue.Title + "<br/> Description: " + issue.Description;
 
-            //SmtpClient client = new System.Net.Mail.SmtpClient
-            //{
-            //    Host = "smtp.gmail.com",
-            //    Port = 587,
-            //    EnableSsl = true,
-            //    UseDefaultCredentials = false,
-            //    DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network,
-            //    Credentials = new System.Net.NetworkCredential("event.report.office@gmail.com", "Parola12#")
-            //};
+            SmtpClient client = new System.Net.Mail.SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                UseDefaultCredentials = false,
+                DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network,
+                Credentials = new System.Net.NetworkCredential("event.report.office@gmail.com", "Start1234.")
+            };
 
-            //client.Send(mail);
+            client.Send(mail);
             #endregion
 
             #region SendSMS
-            //string AccountSid = "AC05c157c4db8b4e2548aaa1f4864931e2";
-            //string AuthToken = "2a3967ee9bda822e0023a8bc2f7e6dc0";
+            string AccountSid = "AC05c157c4db8b4e2548aaa1f4864931e2";
+            string AuthToken = "2a3967ee9bda822e0023a8bc2f7e6dc0";
 
-            //var twilio = new TwilioRestClient(AccountSid, AuthToken);
-            //var message = twilio.SendMessage("+17732957889", "+40740875808", "A new issue has been registered", "");
+            var twilio = new TwilioRestClient(AccountSid, AuthToken);
+            var message = twilio.SendMessage("+17732957889", "+40740875808", "A new issue has been registered with id " + issue.Id, "");
             #endregion
 
             return new
